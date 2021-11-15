@@ -28,8 +28,8 @@ function handleAction(
     }
 
     const did = new DID(receipt.id.toBase58());
-    did.account = account.id;
-    did.timestamp = BigInt.fromU64(blockHeader.timestampNanosec);
+    did.accountId = account.id;
+    //did.timestamp = BigInt.fromU64(blockHeader.timestampNanosec);
     did.save();
   } else {
     log.info("Not processed - FunctionCall is: {}", [functionCall.methodName]);

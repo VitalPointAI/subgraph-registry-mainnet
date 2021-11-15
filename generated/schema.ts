@@ -77,8 +77,7 @@ export class DID extends Entity {
     super();
     this.set("id", Value.fromString(id));
 
-    this.set("account", Value.fromString(""));
-    this.set("timestamp", Value.fromBigInt(BigInt.zero()));
+    this.set("accountId", Value.fromString(""));
   }
 
   save(): void {
@@ -107,21 +106,12 @@ export class DID extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get account(): string {
-    let value = this.get("account");
+  get accountId(): string {
+    let value = this.get("accountId");
     return value!.toString();
   }
 
-  set account(value: string) {
-    this.set("account", Value.fromString(value));
-  }
-
-  get timestamp(): BigInt {
-    let value = this.get("timestamp");
-    return value!.toBigInt();
-  }
-
-  set timestamp(value: BigInt) {
-    this.set("timestamp", Value.fromBigInt(value));
+  set accountId(value: string) {
+    this.set("accountId", Value.fromString(value));
   }
 }
