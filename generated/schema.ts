@@ -78,7 +78,6 @@ export class Greeting extends Entity {
     this.set("id", Value.fromString(id));
 
     this.set("greeter", Value.fromString(""));
-    this.set("timestamp", Value.fromString(""));
   }
 
   save(): void {
@@ -114,14 +113,5 @@ export class Greeting extends Entity {
 
   set greeter(value: string) {
     this.set("greeter", Value.fromString(value));
-  }
-
-  get timestamp(): string {
-    let value = this.get("timestamp");
-    return value!.toString();
-  }
-
-  set timestamp(value: string) {
-    this.set("timestamp", Value.fromString(value));
   }
 }
