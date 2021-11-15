@@ -11,29 +11,29 @@ import {
   BigDecimal
 } from "@graphprotocol/graph-ts";
 
-export class Greeter extends Entity {
+export class Account extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
 
-    this.set("name", Value.fromString(""));
+    this.set("accountId", Value.fromString(""));
   }
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save Greeter entity without an ID");
+    assert(id != null, "Cannot save Account entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        "Cannot save Greeter entity with non-string ID. " +
+        "Cannot save Account entity with non-string ID. " +
           'Considering using .toHex() to convert the "id" to a string.'
       );
-      store.set("Greeter", id.toString(), this);
+      store.set("Account", id.toString(), this);
     }
   }
 
-  static load(id: string): Greeter | null {
-    return changetype<Greeter | null>(store.get("Greeter", id));
+  static load(id: string): Account | null {
+    return changetype<Account | null>(store.get("Account", id));
   }
 
   get id(): string {
@@ -45,17 +45,17 @@ export class Greeter extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get name(): string {
-    let value = this.get("name");
+  get accountId(): string {
+    let value = this.get("accountId");
     return value!.toString();
   }
 
-  set name(value: string) {
-    this.set("name", Value.fromString(value));
+  set accountId(value: string) {
+    this.set("accountId", Value.fromString(value));
   }
 
-  get greetings(): Array<string> | null {
-    let value = this.get("greetings");
+  get did(): Array<string> | null {
+    let value = this.get("did");
     if (!value || value.kind == ValueKind.NULL) {
       return null;
     } else {
@@ -63,38 +63,39 @@ export class Greeter extends Entity {
     }
   }
 
-  set greetings(value: Array<string> | null) {
+  set did(value: Array<string> | null) {
     if (!value) {
-      this.unset("greetings");
+      this.unset("did");
     } else {
-      this.set("greetings", Value.fromStringArray(<Array<string>>value));
+      this.set("did", Value.fromStringArray(<Array<string>>value));
     }
   }
 }
 
-export class Greeting extends Entity {
+export class DID extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
 
-    this.set("greeter", Value.fromString(""));
+    this.set("account", Value.fromString(""));
+    this.set("timestamp", Value.fromBigInt(BigInt.zero()));
   }
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save Greeting entity without an ID");
+    assert(id != null, "Cannot save DID entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        "Cannot save Greeting entity with non-string ID. " +
+        "Cannot save DID entity with non-string ID. " +
           'Considering using .toHex() to convert the "id" to a string.'
       );
-      store.set("Greeting", id.toString(), this);
+      store.set("DID", id.toString(), this);
     }
   }
 
-  static load(id: string): Greeting | null {
-    return changetype<Greeting | null>(store.get("Greeting", id));
+  static load(id: string): DID | null {
+    return changetype<DID | null>(store.get("DID", id));
   }
 
   get id(): string {
@@ -106,12 +107,21 @@ export class Greeting extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get greeter(): string {
-    let value = this.get("greeter");
+  get account(): string {
+    let value = this.get("account");
     return value!.toString();
   }
 
-  set greeter(value: string) {
-    this.set("greeter", Value.fromString(value));
+  set account(value: string) {
+    this.set("account", Value.fromString(value));
+  }
+
+  get timestamp(): BigInt {
+    let value = this.get("timestamp");
+    return value!.toBigInt();
+  }
+
+  set timestamp(value: BigInt) {
+    this.set("timestamp", Value.fromBigInt(value));
   }
 }

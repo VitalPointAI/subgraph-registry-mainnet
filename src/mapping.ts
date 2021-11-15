@@ -1,5 +1,5 @@
 import { near, BigInt, log } from "@graphprotocol/graph-ts";
-import { Greeter, Greeting } from "../generated/schema";
+import { DID, Account } from "../generated/schema";
 
 export function handleReceipt(receipt: near.ReceiptWithOutcome): void {
   const actions = receipt.receipt.actions;
@@ -19,18 +19,18 @@ function handleAction(
   }
 
   const functionCall = action.toFunctionCall();
-  if (functionCall.methodName == "sayGm") {
-    let greeter = Greeter.load(receipt.signerId);
-    if (greeter == null) {
-      greeter = new Greeter(receipt.signerId);
-      greeter.name = receipt.signerId;
-      greeter.save();
+  if (functionCall.methodName == "putDID") {
+    let account = Account.load(receipt.signerId);
+    if (account == null) {
+      account = new Account(receipt.signerId);
+      account.accountId = receipt.signerId;
+      account.save();
     }
 
-    const greeting = new Greeting(receipt.id.toBase58());
-    greeting.greeter = greeter.id;
- //   greeting.timestamp = blockHeader.timestampNanosec;
-    greeting.save();
+    const did = new DID(receipt.id.toBase58());
+    did.account = account.id;
+    did.timestamp = BigInt.fromU64(blockHeader.timestampNanosec);
+    did.save();
   } else {
     log.info("Not processed - FunctionCall is: {}", [functionCall.methodName]);
   }

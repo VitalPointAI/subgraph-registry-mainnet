@@ -1,5 +1,5 @@
 specVersion: 0.0.4
-description: Good Morning NEAR
+description: DID registry
 repository: https://github.com/VitalPointAI/graph-near-receipts.git
 schema:
   file: ./schema.graphql
@@ -8,14 +8,13 @@ dataSources:
     name: receipts
     network: near-mainnet
     source:
-      account: "app.good-morning.near"
-      startBlock: 50736511
+      account: "did.near"
+      startBlock: 26022597
     mapping:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/mapping.ts
       entities:
-        - Greeter
-        - Greeting
+        - DID
       receiptHandlers:
         - handler: handleReceipt

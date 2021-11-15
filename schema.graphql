@@ -1,10 +1,11 @@
-type Greeter @entity {
+type Account @entity {
   id: ID!
-  name: String!
-  greetings: [Greeting!] @derivedFrom(field: "greeter")
+  accountId: String!
+  did: [DID!] @derivedFrom(field: "account")
 }
 
-type Greeting @entity {
+type DID @entity {
   id: ID!
-  greeter: Greeter!
+  account: Account!
+  timestamp: BigInt!
 }
