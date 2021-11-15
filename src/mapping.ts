@@ -1,22 +1,37 @@
-import { NewGravatar, UpdatedGravatar } from '../generated/Gravity/Gravity'
-import { Gravatar } from '../generated/schema'
+import { near, BigInt, log } from "@graphprotocol/graph-ts";
+import { Greeter, Greeting } from "../generated/schema";
 
-export function handleNewGravatar(event: NewGravatar): void {
-  let gravatar = new Gravatar(event.params.id.toHex())
-  gravatar.owner = event.params.owner
-  gravatar.displayName = event.params.displayName
-  gravatar.imageUrl = event.params.imageUrl
-  gravatar.save()
+export function handleReceipt(receipt: near.ReceiptWithOutcome): void {
+  const actions = receipt.receipt.actions;
+  for (let i = 0; i < actions.length; i++) {
+    handleAction(actions[i], receipt.receipt, receipt.block.header);
+  }
 }
 
-export function handleUpdatedGravatar(event: UpdatedGravatar): void {
-  let id = event.params.id.toHex()
-  let gravatar = Gravatar.load(id)
-  if (gravatar == null) {
-    gravatar = new Gravatar(id)
+function handleAction(
+  action: near.ActionValue,
+  receipt: near.ActionReceipt,
+  blockHeader: near.BlockHeader
+): void {
+  if (action.kind != near.ActionKind.FUNCTION_CALL) {
+    log.info("Early return: {}", ["Not a function call"]);
+    return;
   }
-  gravatar.owner = event.params.owner
-  gravatar.displayName = event.params.displayName
-  gravatar.imageUrl = event.params.imageUrl
-  gravatar.save()
+
+  const functionCall = action.toFunctionCall();
+  if (functionCall.methodName == "sayGm") {
+    let greeter = Greeter.load(receipt.signerId);
+    if (greeter == null) {
+      greeter = new Greeter(receipt.signerId);
+      greeter.name = receipt.signerId;
+      greeter.save();
+    }
+
+    const greeting = new Greeting(receipt.id.toBase58());
+    greeting.greeter = greeter.id;
+    greeting.timestamp = BigInt.fromU64(blockHeader.timestampNanosec);
+    greeting.save();
+  } else {
+    log.info("Not processed - FunctionCall is: {}", [functionCall.methodName]);
+  }
 }
