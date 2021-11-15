@@ -16,5 +16,6 @@ dataSources:
       file: ./src/mapping.ts
       entities:
         - DID
+        - Account
       receiptHandlers:
         - handler: handleReceipt

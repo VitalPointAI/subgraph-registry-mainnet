@@ -16,5 +16,6 @@ dataSources:
       file: receipts/receipts.wasm
       entities:
         - DID
+        - Account
       receiptHandlers:
         - handler: handleReceipt
