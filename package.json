@@ -1,7 +1,7 @@
 {
   "name": "near-receipts",
   "version": "0.1.0",
-  "repository": "https://github.com/graphprotocol/example-subgraph",
+  "repository": "https://github.com/VitalPointAI/graph-near-receipts.git",
   "license": "MIT",
   "scripts": {
     "create": "graph create example --node https://api.thegraph.com/deploy/",
