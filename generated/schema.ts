@@ -78,7 +78,7 @@ export class Greeting extends Entity {
     this.set("id", Value.fromString(id));
 
     this.set("greeter", Value.fromString(""));
-    this.set("timestamp", Value.fromBigInt(BigInt.zero()));
+    this.set("timestamp", Value.fromString(""));
   }
 
   save(): void {
@@ -116,12 +116,12 @@ export class Greeting extends Entity {
     this.set("greeter", Value.fromString(value));
   }
 
-  get timestamp(): BigInt {
+  get timestamp(): string {
     let value = this.get("timestamp");
-    return value!.toBigInt();
+    return value!.toString();
   }
 
-  set timestamp(value: BigInt) {
-    this.set("timestamp", Value.fromBigInt(value));
+  set timestamp(value: string) {
+    this.set("timestamp", Value.fromString(value));
   }
 }

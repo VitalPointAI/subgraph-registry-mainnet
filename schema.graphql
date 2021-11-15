@@ -7,5 +7,5 @@ type Greeter @entity {
 type Greeting @entity {
   id: ID!
   greeter: Greeter!
-  timestamp: BigInt!
+  timestamp: String!
 }
