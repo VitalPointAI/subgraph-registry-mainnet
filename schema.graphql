@@ -1,10 +1,10 @@
 type Account @entity {
   id: ID!
   accountId: String!
-  dids: [DID!] @derivedFrom(field: "account")
+  dids: [Did!] @derivedFrom(field: "account")
 }
 
-type DID @entity {
+type Did @entity {
   id: ID!
   account: Account!
 }

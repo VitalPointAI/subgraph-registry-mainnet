@@ -1,5 +1,5 @@
 import { near, BigInt, log } from "@graphprotocol/graph-ts";
-import { DID, Account } from "../generated/schema";
+import { Did, Account } from "../generated/schema";
 
 export function handleReceipt(receipt: near.ReceiptWithOutcome): void {
   const actions = receipt.receipt.actions;
@@ -27,7 +27,7 @@ function handleAction(
       account.save();
     }
 
-    const did = new DID(receipt.id.toBase58());
+    const did = new Did(receipt.id.toBase58());
     did.account = account.id;
     //did.timestamp = BigInt.fromU64(blockHeader.timestampNanosec);
     did.save();
