@@ -54,8 +54,8 @@ export class Account extends Entity {
     this.set("accountId", Value.fromString(value));
   }
 
-  get did(): Array<string> | null {
-    let value = this.get("did");
+  get dids(): Array<string> | null {
+    let value = this.get("dids");
     if (!value || value.kind == ValueKind.NULL) {
       return null;
     } else {
@@ -63,11 +63,11 @@ export class Account extends Entity {
     }
   }
 
-  set did(value: Array<string> | null) {
+  set dids(value: Array<string> | null) {
     if (!value) {
-      this.unset("did");
+      this.unset("dids");
     } else {
-      this.set("did", Value.fromStringArray(<Array<string>>value));
+      this.set("dids", Value.fromStringArray(<Array<string>>value));
     }
   }
 }
@@ -77,7 +77,7 @@ export class DID extends Entity {
     super();
     this.set("id", Value.fromString(id));
 
-    this.set("accountId", Value.fromString(""));
+    this.set("account", Value.fromString(""));
   }
 
   save(): void {
@@ -106,12 +106,12 @@ export class DID extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get accountId(): string {
-    let value = this.get("accountId");
+  get account(): string {
+    let value = this.get("account");
     return value!.toString();
   }
 
-  set accountId(value: string) {
-    this.set("accountId", Value.fromString(value));
+  set account(value: string) {
+    this.set("account", Value.fromString(value));
   }
 }

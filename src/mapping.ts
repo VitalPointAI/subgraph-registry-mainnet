@@ -28,7 +28,7 @@ function handleAction(
     }
 
     const did = new DID(receipt.id.toBase58());
-    did.accountId = account.id;
+    did.account = account.id;
     //did.timestamp = BigInt.fromU64(blockHeader.timestampNanosec);
     did.save();
   } else {
