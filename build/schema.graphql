@@ -1,10 +1,30 @@
 type Account @entity {
   id: ID!
   accountId: String!
-  dids: [Did!] @derivedFrom(field: "account")
+  actionData: BigInt!
+  actionKind: Int!
+  gasPrice: BigInt!
+  inputDataIds: [Bytes!]
+  actionLogs: [String!]
+  json: [Bytes!]
+  name: String!
+  did: String!
+  dataReceiver: [DataReceiver!]!
+ # actionOutputDataReceivers: [Bytes!]
+ # actionOutcome: [String!]
+ # data: [String!] @derivedFrom(field: "did")
+  # dids: [Did!] @derivedFrom(field: "accountId")
 }
 
-type Did @entity {
+type DataReceiver @entity {
   id: ID!
-  account: Account!
+  dataId: Bytes!
+  receiverId: String!
 }
+
+# type Did @entity {
+#   id: ID!
+#   # accountId: String!
+#   did: Account!
+#   # timestamp: BigInt!
+# }

@@ -9,13 +9,13 @@ dataSources:
     network: near-mainnet
     source:
       account: did.near
-      startBlock: 26022597
+      startBlock: 52840668
     mapping:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: receipts/receipts.wasm
       entities:
-        - DID
         - Account
+        - DataReceiver
       receiptHandlers:
         - handler: handleReceipt

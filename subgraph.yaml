@@ -8,14 +8,14 @@ dataSources:
     name: receipts
     network: near-mainnet
     source:
-      account: "did.near"
-      startBlock: 26022597
+      account: "cdao.near"
+      startBlock: 53409509
     mapping:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/mapping.ts
       entities:
-        - DID
         - Account
+        - DataReceiver
       receiptHandlers:
         - handler: handleReceipt
