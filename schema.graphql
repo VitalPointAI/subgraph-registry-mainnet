@@ -6,6 +6,7 @@ type Account @entity {
   # gasPrice: BigInt!
   # inputDataIds: [Bytes!]
   actionLogs: [String!]
+  contractId: [String!]
   # json: [Bytes!]
   # name: String!
   # did: String!

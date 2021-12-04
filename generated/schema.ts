@@ -70,4 +70,21 @@ export class Account extends Entity {
       this.set("actionLogs", Value.fromStringArray(<Array<string>>value));
     }
   }
+
+  get contractId(): Array<string> | null {
+    let value = this.get("contractId");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toStringArray();
+    }
+  }
+
+  set contractId(value: Array<string> | null) {
+    if (!value) {
+      this.unset("contractId");
+    } else {
+      this.set("contractId", Value.fromStringArray(<Array<string>>value));
+    }
+  }
 }

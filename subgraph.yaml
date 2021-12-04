@@ -1,6 +1,6 @@
 specVersion: 0.0.4
 description: DID registry
-repository: https://github.com/VitalPointAI/graph-near-receipts.git
+repository: https://github.com/VitalPointAI/catalyst-subgraph-registry
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,8 +8,8 @@ dataSources:
     name: receipts
     network: near-mainnet
     source:
-      account: "cdao.near"
-      startBlock: 53409510
+      account: cdao.near
+      startBlock: 54167320
     mapping:
       apiVersion: 0.0.5
       language: wasm/assemblyscript

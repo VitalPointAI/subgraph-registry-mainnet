@@ -26,40 +26,20 @@ function handleAction(
 
   const functionCall = action.toFunctionCall();
   if (functionCall.methodName == "createDAO") {
-    // let account = Account.load(receipt.signerId);
-    // if (account == null) {
       const receiptId = receipt.id.toHexString()
       let account = new Account(receipt.signerId);
       account.accountId = receipt.signerId;
-      // account.actionData = BigInt.fromU64(action.data);
-      // account.actionKind = action.kind
-      // account.gasPrice = receipt.gasPrice
-      // account.inputDataIds = receipt.inputDataIds
       account.actionLogs = outcome.logs
+  } else {
+    log.info("Not processed - FunctionCall is: {}", [functionCall.methodName]);
+  }
 
-      // const dataReceivers = receipt.outputDataReceivers
-      // for (let i = 0; i < dataReceivers.length; i++) {
-      //   const dataReceiver = new DataReceiver(`${receiptId}-${i}`)
-      //   dataReceiver.dataId = dataReceivers[i].dataId
-      //   dataReceiver.receiverId = dataReceivers[i].receiverId
-      //   dataReceiver.save()
-
-      //   account.dataReceiver.push(dataReceiver.id)
-      // }
-     
-      
-    
-      //account.actionOutputDataReceivers = receipt.outputDataReceivers
-     // account.actionOutcome = outcome.logs
-     
+  if (functionCall.methodName == "inactivateDAO") {
+      const receiptId = receipt.id.toHexString()
+      let account = new Account(receipt.signerId);
+      account.accountId = receipt.signerId;
+      account.actionLogs = outcome.logs     
       account.save();
-    // }
-
-    // const did = new Did(receipt.id.toBase58());
-    // // did.accountId = account.id;
-    // did.did = account.data
-    // // did.timestamp = BigInt.fromU64(blockHeader.timestampNanosec);
-    // did.save();
   } else {
     log.info("Not processed - FunctionCall is: {}", [functionCall.methodName]);
   }
