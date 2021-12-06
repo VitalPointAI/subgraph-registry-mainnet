@@ -8,8 +8,8 @@ dataSources:
     name: receipts
     network: near-mainnet
     source:
-      account: cdao.near
-      startBlock: 54167320
+      account: did.near
+      startBlock: 54398767
     mapping:
       apiVersion: 0.0.5
       language: wasm/assemblyscript

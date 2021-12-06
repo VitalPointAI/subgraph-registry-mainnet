@@ -16,7 +16,7 @@ export class Account extends Entity {
     super();
     this.set("id", Value.fromString(id));
 
-    this.set("accountId", Value.fromString(""));
+    this.set("signerId", Value.fromString(""));
   }
 
   save(): void {
@@ -45,17 +45,17 @@ export class Account extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get accountId(): string {
-    let value = this.get("accountId");
+  get signerId(): string {
+    let value = this.get("signerId");
     return value!.toString();
   }
 
-  set accountId(value: string) {
-    this.set("accountId", Value.fromString(value));
+  set signerId(value: string) {
+    this.set("signerId", Value.fromString(value));
   }
 
-  get actionLogs(): Array<string> | null {
-    let value = this.get("actionLogs");
+  get log(): Array<string> | null {
+    let value = this.get("log");
     if (!value || value.kind == ValueKind.NULL) {
       return null;
     } else {
@@ -63,28 +63,11 @@ export class Account extends Entity {
     }
   }
 
-  set actionLogs(value: Array<string> | null) {
+  set log(value: Array<string> | null) {
     if (!value) {
-      this.unset("actionLogs");
+      this.unset("log");
     } else {
-      this.set("actionLogs", Value.fromStringArray(<Array<string>>value));
-    }
-  }
-
-  get contractId(): Array<string> | null {
-    let value = this.get("contractId");
-    if (!value || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toStringArray();
-    }
-  }
-
-  set contractId(value: Array<string> | null) {
-    if (!value) {
-      this.unset("contractId");
-    } else {
-      this.set("contractId", Value.fromStringArray(<Array<string>>value));
+      this.set("log", Value.fromStringArray(<Array<string>>value));
     }
   }
 }
