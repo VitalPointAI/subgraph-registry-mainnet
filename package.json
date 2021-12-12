@@ -1,7 +1,7 @@
 {
   "name": "didregistry",
   "version": "0.1.0",
-  "repository": "https://github.com/VitalPointAI/graph-near-receipts.git",
+  "repository": "https://github.com/VitalPointAI/catalyst-subgraph-registry.git",
   "license": "MIT",
   "scripts": {
     "codegen": "graph codegen",

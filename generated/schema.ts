@@ -73,7 +73,6 @@ export class Log extends Entity {
     this.set("standard", Value.fromString(""));
     this.set("version", Value.fromString(""));
     this.set("event", Value.fromString(""));
-    this.set("verified", Value.fromBoolean(false));
   }
 
   save(): void {
