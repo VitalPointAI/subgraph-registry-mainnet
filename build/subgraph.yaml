@@ -16,5 +16,6 @@ dataSources:
       file: receipts/receipts.wasm
       entities:
         - Account
+        - Log
       receiptHandlers:
         - handler: handleReceipt
