@@ -1,16 +1,16 @@
 {
-  "name": "didregistry",
+  "name": "registry",
   "version": "0.1.0",
-  "repository": "https://github.com/VitalPointAI/catalyst-subgraph-registry.git",
+  "repository": "https://github.com/VitalPointAI/subgraph-registry-mainnet.git",
   "license": "MIT",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy ALuhning/DID-Registry --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/"
+    "deploy": "graph deploy vitalpointai/registry-near-mnet --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/"
   },
   "devDependencies": {
-    "@graphprotocol/graph-cli": "0.25.1",
-    "@graphprotocol/graph-ts": "0.24.1"
+    "@graphprotocol/graph-cli": "0.29.0",
+    "@graphprotocol/graph-ts": "0.26.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

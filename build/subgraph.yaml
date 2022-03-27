@@ -6,16 +6,32 @@ schema:
 dataSources:
   - kind: near
     name: receipts
-    network: near-mainnet
+    network: near-testnet
     source:
-      account: did.near
-      startBlock: 54398767
+      account: dids2.vitalpointai.testnet
+      startBlock: 81862800
     mapping:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: receipts/receipts.wasm
       entities:
-        - Account
-        - Log
+        - PutDID
+        - PutIdDID
+        - DeleteDID
+        - DeleteIdDID
+        - Init
+        - StoreAliase
+        - DeleteAliase
+        - TransferAdmin
+        - RemoveVerifier
+        - AddVerifier
+        - AddRole
+        - RemoveRole
+        - ChangeVerificationStatuse
+        - ChangeIdVerificationStatuse
+        - AddAdmin
+        - RemoveAdmin
+        - AddFundingKey
+        - DeleteFundingKey
       receiptHandlers:
         - handler: handleReceipt

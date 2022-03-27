@@ -1,6 +1,11 @@
 specVersion: 0.0.4
 description: DID registry
-repository: https://github.com/VitalPointAI/catalyst-subgraph-registry
+repository: https://github.com/VitalPointAI/subgraph-registry-mainnet.git
+#features:
+# - grafting
+# graft:
+#   base: QmdCKFL9EqTADPW7SKoUn5J8e4MBt39HqYv84eX6yGf5eS # Subgraph ID of base subgraph
+#   block: 82317262 # Block number
 schema:
   file: ./schema.graphql
 dataSources:
@@ -9,13 +14,29 @@ dataSources:
     network: near-mainnet
     source:
       account: did.near
-      startBlock: 54398767
+      startBlock: 62280585
     mapping:
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/mapping.ts
       entities:
-        - Account
-        - Log
+        - PutDID
+        - PutIdDID
+        - DeleteDID
+        - DeleteIdDID
+        - Init
+        - StoreAliase
+        - DeleteAliase
+        - TransferAdmin
+        - RemoveVerifier
+        - AddVerifier
+        - AddRole
+        - RemoveRole
+        - ChangeVerificationStatuse
+        - ChangeIdVerificationStatuse
+        - AddAdmin
+        - RemoveAdmin
+        - AddFundingKey
+        - DeleteFundingKey
       receiptHandlers:
         - handler: handleReceipt

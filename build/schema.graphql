@@ -1,33 +1,431 @@
-type Account @entity {
+type PutDID @entity {
   id: ID!
-  signerId: String!
-  log: [Log!]!
-}
-
-type Log @entity {
-  id: ID!
-  standard: String!
-  version: String!
-  event: String!
-  adminId: String
-  adminSet: BigInt
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
   accountId: String
-  transferredFrom: String
-  transferred: BigInt
-  transferredTo: String
   did: String
+  type: String
   registered: BigInt
   owner: String
-  verified: Boolean
+}
+
+type PutIdDID @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  identifier: String
+  did: String
+  type: String
+  registered: BigInt
+  owner: String
+}
+
+type DeleteDID @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  accountId: String
+  did: String
+  type: String
   time: BigInt
-  changedBy: String
-  editor: String
-  removedBy: String
-  addedBy: String
-  whitelistedBy: String
   deletedBy: String
+}
+
+type DeleteIdDID @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  identifier: String
+  did: String
+  type: String
+  time: BigInt
+  deletedBy: String
+}
+
+type StoreAliase @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  aliasOwner: String
   alias: String
+  time: BigInt
   storedBy: String
   definition: String
   description: String
+}
+
+type DeleteAliase @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  aliasOwner: String
+  alias: String
+  time: BigInt
+  deletedBy: String
+}
+
+type Init @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  adminId: String
+  adminSet: BigInt
+  accountId: String
+}
+
+type TransferAdmin @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  transferredFrom: String
+  transferred: BigInt
+  transferredTo: String
+}
+
+type ChangeVerificationStatuse @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  accountId: String
+  time: BigInt
+  verified: Boolean
+  changedBy: String
+}
+
+type ChangeIdVerificationStatuse @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  identifier: String
+  time: BigInt
+  verified: Boolean
+  changedBy: String
+}
+
+type RemoveRole @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  contractId: String
+  accountId: String
+  role: String
+  time: BigInt
+  removedBy: String
+}
+
+type AddRole @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  contractId: String
+  accountId: String
+  role: [String!]!
+  time: BigInt
+  addedBy: String
+}
+
+type AddVerifier @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  accountId: String
+  time: BigInt
+  whitelistedBy: String
+}
+
+type RemoveVerifier @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  accountId: String
+  time: BigInt
+  removedBy: String
+}
+
+type AddAdmin @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  addedBy: String
+  time: BigInt
+  adminAdded: String
+}
+
+
+type RemoveAdmin @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  removedBy: String
+  time: BigInt
+  adminRemoved: String
+}
+
+type AddFundingKey @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  fundingAccountPublicKey: String
+  time: BigInt
+  keyAllowance: String
+}
+
+type DeleteFundingKey @entity {
+  id: ID!
+  blockTime: BigInt
+  blockHeight: BigInt
+  blockHash: String
+  predecessorId: String
+  receiverId: String
+  signerId: String
+  signerPublicKey: String
+  gasBurned: BigInt
+  tokensBurned: BigInt
+  outcomeId: String
+  executorId: String
+  outcomeBlockHash: String
+  log: String
+  standard: String
+  version: String
+  event: String
+  deletedFundingAccountPublicKey: String
+  time: BigInt
 }
